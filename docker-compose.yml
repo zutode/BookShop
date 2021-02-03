@@ -1,0 +1,19 @@
+version: "2"
+services:
+  mysql:
+    container_name: book-shop
+    image: mysql:8.0
+    command: ['--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+    ports:
+      - 13306:3306
+    volumes:
+      - shop-mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: shop_root
+      MYSQL_DATABASE: bookshop
+      MYSQL_USER: shop_user
+      MYSQL_PASSWORD: shop_pass
+
+volumes:
+  shop-mysql:
